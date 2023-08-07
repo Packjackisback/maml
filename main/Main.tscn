@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/Main.gd" type="Script" id=1]
+[ext_resource path="res://coolmathgames/CoolMathIntegration.tscn" type="PackedScene" id=5]
+
+[node name="Main" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 1 )
+
+[node name="CoolMathIntegration" parent="." instance=ExtResource( 5 )]
+
+[connection signal="adbreak_completed" from="CoolMathIntegration" to="." method="_on_CoolMathIntegration_adbreak_completed"]
+[connection signal="adbreak_started" from="CoolMathIntegration" to="." method="_on_CoolMathIntegration_adbreak_started"]
+[connection signal="watermark_finished" from="CoolMathIntegration" to="." method="_on_CoolMathIntegration_watermark_finished"]

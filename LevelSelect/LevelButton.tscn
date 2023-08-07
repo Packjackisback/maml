@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://LevelSelect/LevelButton.gd" type="Script" id=1]
+[ext_resource path="res://Font/big_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Font/TinyUnicode.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://trophies/bronze.png" type="Texture" id=4]
+[ext_resource path="res://trophies/silver.png" type="Texture" id=5]
+[ext_resource path="res://trophies/gold.png" type="Texture" id=6]
+[ext_resource path="res://trophies/diamond.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+extra_spacing_top = -6
+extra_spacing_bottom = -1
+font_data = ExtResource( 3 )
+
+[node name="LevelButton" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -230.0
+margin_bottom = -140.0
+rect_min_size = Vector2( 40, 40 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.133333, 0.360784, 0.623529, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 1
+
+[node name="Margin" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 570.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 32, 22 )
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Margin"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 568.0
+margin_bottom = 20.0
+color = Color( 0.0980392, 0.266667, 0.458824, 1 )
+
+[node name="Margin" type="MarginContainer" parent="VBoxContainer/Margin"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 568.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Margin/Margin"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 564.0
+margin_bottom = 16.0
+color = Color( 0.168627, 0.447059, 0.768627, 1 )
+
+[node name="Level" type="Label" parent="VBoxContainer/Margin/Margin"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 564.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="Time" type="Label" parent="VBoxContainer"]
+margin_top = 23.0
+margin_right = 570.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+text = "0:00:00"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 30.0
+margin_right = 570.0
+margin_bottom = 38.0
+custom_constants/margin_right = 2
+custom_constants/margin_left = 2
+
+[node name="Trophies" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+margin_left = 2.0
+margin_right = 568.0
+margin_bottom = 8.0
+custom_constants/separation = 1
+alignment = 1
+
+[node name="Bronze" type="TextureRect" parent="VBoxContainer/MarginContainer/Trophies"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 265.0
+margin_right = 273.0
+margin_bottom = 8.0
+texture = ExtResource( 4 )
+
+[node name="Silver" type="TextureRect" parent="VBoxContainer/MarginContainer/Trophies"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 274.0
+margin_right = 282.0
+margin_bottom = 8.0
+texture = ExtResource( 5 )
+
+[node name="Gold" type="TextureRect" parent="VBoxContainer/MarginContainer/Trophies"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 283.0
+margin_right = 291.0
+margin_bottom = 8.0
+texture = ExtResource( 6 )
+
+[node name="Platinum" type="TextureRect" parent="VBoxContainer/MarginContainer/Trophies"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 292.0
+margin_right = 300.0
+margin_bottom = 8.0
+texture = ExtResource( 7 )
+
+[node name="Button" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

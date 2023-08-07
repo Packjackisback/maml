@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/WinControl.gd" type="Script" id=1]
+[ext_resource path="res://UI/winscreen.png" type="Texture" id=2]
+[ext_resource path="res://Font/small_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Font/big_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://trophies/bronze.png" type="Texture" id=5]
+[ext_resource path="res://Audio/win1.wav" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 4.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 2, 0.5, 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( 71, 12 ), Vector2( 71, 16 ), Vector2( 71, 20 ), Vector2( 71, 16 ) ]
+}
+
+[node name="WinControl" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 71.0
+margin_top = 16.0
+margin_right = 199.0
+margin_bottom = 164.0
+texture = ExtResource( 2 )
+
+[node name="ButtonPrompts2" type="VBoxContainer" parent="TextureRect"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = -32.0
+margin_right = -24.0
+margin_bottom = 6.0
+
+[node name="Label" type="Label" parent="TextureRect/ButtonPrompts2"]
+margin_right = 80.0
+margin_bottom = 5.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
+text = "Space to continue"
+
+[node name="Label3" type="Label" parent="TextureRect/ButtonPrompts2"]
+margin_top = 9.0
+margin_right = 80.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
+text = "R to retry"
+
+[node name="Label2" type="Label" parent="TextureRect/ButtonPrompts2"]
+margin_top = 18.0
+margin_right = 80.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
+text = "Esc to menu"
+
+[node name="Label" type="Label" parent="TextureRect"]
+margin_left = 25.0
+margin_top = 28.0
+margin_right = 89.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 3 )
+text = "Level Complete!"
+
+[node name="NewBest" type="Label" parent="TextureRect"]
+visible = false
+margin_left = 61.0
+margin_top = 59.0
+margin_right = 106.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0.933333, 0.223529, 1 )
+text = "New best!"
+
+[node name="Time" type="Label" parent="TextureRect"]
+margin_left = 25.0
+margin_top = 45.0
+margin_right = 93.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 4 )
+text = "00:00.00"
+
+[node name="MedalGot" type="TextureRect" parent="TextureRect"]
+margin_left = 53.0
+margin_top = 67.0
+margin_right = 61.0
+margin_bottom = 75.0
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="ToNext" type="Control" parent="TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ToNextTime" type="Label" parent="TextureRect/ToNext"]
+margin_left = 42.0
+margin_top = 95.0
+margin_right = 83.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 3 )
+text = ": 00:00.00"
+
+[node name="Medal" type="TextureRect" parent="TextureRect/ToNext"]
+margin_left = 23.0
+margin_top = 91.0
+margin_right = 31.0
+margin_bottom = 99.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 1 )

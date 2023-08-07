@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Font/small_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://coolmathgames/CoolMathIntegration.gd" type="Script" id=2]
+[ext_resource path="res://coolmathgames/CoolmathGames-800x550.png" type="Texture" id=3]
+
+[node name="CoolMathIntegration" type="Node"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WebsiteSplash" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 7
+
+[node name="SplashTimer" type="Timer" parent="CanvasLayer/WebsiteSplash"]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="DebugLabel" type="Label" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 1 )
+
+[connection signal="timeout" from="CanvasLayer/WebsiteSplash/SplashTimer" to="." method="_on_SplashTimer_timeout"]
+[connection signal="timeout" from="CanvasLayer/WebsiteSplash/SplashTimer" to="CanvasLayer/WebsiteSplash" method="hide"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://halo/LightCircle.png" type="Texture" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=15]
+blend_mode = 1
+
+[node name="Halo" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.0235294 )
+show_behind_parent = true
+material = SubResource( 15 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
